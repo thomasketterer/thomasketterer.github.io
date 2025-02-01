@@ -1,0 +1,173 @@
+body {
+    font-family: "Gloria Hallelujah", 'Times New Roman', Times, serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+
+.gloria-hallelujah-regular {
+    font-family: "Gloria Hallelujah", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+  @font-face {
+    font-family: "Gloria Hallelujah";
+    src: url(fonts/GloriaHallelujah-Regular.ttf);
+}
+  
+  /*standard text for font*/
+.text {
+    font-family: "Gloria Hallelujah", 'Times New Roman', Times, serif;
+    text-decoration: none;
+}
+  
+#logo {
+    font-family: "Gloria Hallelujah", 'Times New Roman', Times, serif;
+    text-decoration: none;
+    font-size: 150%;
+}
+  
+a {
+    color: white;
+}
+  
+  /*menu bar for naviagtion*/
+nav {
+    background-color: #000000;
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+  
+nav .left a {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+nav .right a {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0.625rem;
+}
+  
+nav a:hover {
+    color: rgb(182, 182, 182);
+    transition: color 0.3s ease-in-out;
+}
+
+.divider {
+    margin-top: 25px;
+    height: 25px;
+    background-color: lightgrey;
+    border-radius: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+}
+
+.header {
+    font-size: 40px;
+    text-align: center;
+    background: #f8f8f8;
+    padding-top: 40px;
+    padding-bottom: 0px;
+}
+
+.subheader {
+    font-size: 20px;
+    text-align: center;
+    background: #f8f8f8;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: -60px;
+}
+
+.paragraphs {
+    text-align: left;
+    background: #f8f8f8;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 70%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left-column {
+    float: left;
+    flex: 3;
+}
+
+.right-column {
+    float: left;
+    flex: 1;
+    padding-left: 20px;
+}
+
+.fakeimg {
+    background-color: #aaa;
+    width: 95%;
+    padding: 20px;
+}
+
+.realimg {
+    height: 100%;
+    width: auto;
+    justify-content: center;
+    /* border: 5px solid black; */
+}
+
+.card {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 20px;
+    border: 5px solid black;
+    margin-left: 5px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .left-column, .right-column {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+#footer {
+    text-align: center;
+    background-color: black;
+    padding: 25px;
+    color: white;
+    margin-top: 25px;
+}

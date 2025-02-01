@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <title>TKETT</title>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="left">
+        <a href="index.html" id="logo">TKETT</a>
+      </div>
+      <div class="right">
+        <a href="#about-container" class="text">ABOUT</a>
+        <a href="/projects/projects.html" class="text">PROJECTS</a>
+        <a href="/blog/blog.html" class="text">BLOG</a>
+        <a href="#footer" class="text">CONTACT</a>
+      </div>
+    </nav>
+  </header>
+  <div id="sketch">
+    <script src="sketch.js"></script>
+  </div>
+  <div id="about-container">
+    <div id="about">
+      <h1 style="margin-left:20px"><u>About Me</u></h1>
+      <p>
+        &emsp; &emsp; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada imperdiet enim
+        hendrerit placerat. Phasellus massa lorem, ultrices non leo sed, ornare scelerisque justo. Donec malesuada diam
+        et enim vestibulum tempus. Integer tempus, turpis eu consectetur venenatis, tortor nisl consequat eros, in
+        fringilla urna nunc et mi. Pellentesque convallis, lectus nec ultricies vehicula, nisi sapien ornare justo, non
+        ullamcorper urna sem quis nisi. Donec mattis in eros et dictum. Vestibulum tempus malesuada mauris, sit amet
+        bibendum metus placerat ut. Sed eu ornare purus, quis placerat mi.
+        Integer at cursus odio, sed dignissim tortor. Proin feugiat est non tincidunt venenatis. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Integer molestie vel augue at vulputate. Nunc vestibulum ut ante ac
+        pretium. Quisque maximus bibendum dui non vehicula. Proin imperdiet finibus velit ut commodo. Nam condimentum
+        augue vel ante malesuada laoreet. In mollis nisi ac aliquet mattis. Nulla sit amet sapien eu augue interdum
+        laoreet. Mauris a vestibulum nibh. Cras quis sem non ante facilisis pharetra. Aenean tristique enim ut felis
+        tincidunt tincidunt. Nulla blandit suscipit laoreet.
+        Vivamus id malesuada nisi. Vivamus ut risus ut tellus vestibulum laoreet. Nulla sollicitudin ullamcorper odio.
+        Donec at cursus quam, in euismod libero. Quisque ut dignissim odio. Suspendisse ac mattis justo. Vivamus sodales
+        nibh ut placerat euismod. Donec vel sodales elit. Aenean ac mauris fermentum, eleifend odio in, iaculis metus.
+        Nunc nunc dui, cursus ultricies faucibus vitae, ultrices nec augue. Maecenas ut felis eget turpis cursus ornare
+        nec eget justo.
+      </p>
+    </div>
+    <figure id="bust">
+      <img src="/pictures/drawn-headshot.png" alt="bust"><br>
+      <figcaption class="text">self portrait</figcaption>
+    </figure>
+  </div>
+  <div id="social-links">
+    <a href="https://www.instagram.com/thomas.ketterer/" target="_blank"><img src="/pictures/instagram.png"
+        alt="instagram"></a>
+    <a href="https://www.linkedin.com/in/thomas-ketterer-161251276/" target="_blank"><img src="/pictures/linkedin.png"
+        alt="linkedin"></a>
+    <a href="https://github.com/thomasketterer" target="_blank"><img src="/pictures/github.png" alt="github"></a>
+    <a href="#" target="_blank"><img src="/pictures/youtube.png" alt="youtube"></a>
+  </div>
+  <div class="divider"></div>
+  <h1 class="text" style="text-align: center; letter-spacing: 0.8rem;">Projects</h1>
+  <hr style="width: 10%; size: 500px;">
+  <div class="swiper mySwiper">
+    <div class="container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/logo.PNG" alt="project 1 photo"> <!--make this image of KIDS-->
+            </div>
+            <div class="card-info">
+              <h2>Website</h2>
+              <p>For the first project of the 12 for 12 I decided to create a website that would allow me to showcase my projects while also holding me accountable.</p>
+              <div class="btn">
+                <button class="text">Learn More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a class="swiper-slide" href="https://github.com/thomasketterer/Data-Structures-and-Algorithms">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/data_and_alg.webp" alt="data_and_alg">
+            </div>
+            <div class="card-info">
+              <h2>Data Structures and Algorithms</h2>
+              <p>Coding project in Java</p>
+              <div class="btn">
+                <button class="text">Repository</button>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="swiper-slide" href="https://momuntum.org">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/momuntum_logo.png" alt="momuntum logo">
+            </div>
+            <div class="card-info">
+              <h2>moMUNtum</h2>
+              <p>A project dedicated to making Model UN more accessible, equitable, and impactful</p>
+              <div class="btn">
+                <button class="text">Explore the Cause</button>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="swiper-slide" href="https://drive.google.com/file/d/19M83wH5XGe4MBAKDQNe4c1L8uCNjBkpD/view?usp=sharing" target="_blank">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/the_gavel.PNG" alt="the gavel"> <!--make this image of KIDS-->
+            </div>
+            <div class="card-info">
+              <h2>The Gavel</h2>
+              <p>Video that I scripted, directed, and starred in for the closing ceremony of UNCMUNC XV.</p>
+              <div class="btn">
+                <button class="text">Watch the Video</button>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="swiper-slide" href="https://github.com/thomasketterer/blockchain">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/blockchain_logo.jpg" alt="blockchain">
+            </div>
+            <div class="card-info">
+              <h2>Simple Blockchain</h2>
+              <p>Experimenting with a very simple blockchain to increase my knowledge of the topic</p>
+              <div class="btn">
+                <button class="text">Respository</button>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 2</h2>
+              <p>Coming February 28, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 3</h2>
+              <p>Coming March 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 4</h2>
+              <p>Coming April 30, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 5</h2>
+              <p>Coming May 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 6</h2>
+              <p>Coming June 30, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 7</h2>
+              <p>Coming July 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 8</h2>
+              <p>Coming August 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 9</h2>
+              <p>Coming September 30, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 10</h2>
+              <p>Coming October 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 11</h2>
+              <p>Coming November 30, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="imageBox">
+            <div class="image">
+              <img src="/pictures/under-construction.jpg" alt="project 1 photo">
+            </div>
+            <div class="card-info">
+              <h2>12 for 12<br>Project 12</h2>
+              <p>Coming December 31, 2025</p>
+              <div class="btn">
+                <button class="text">Coming Soon...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="main.js"></script>
+
+  <div class="divider"></div>
+
+  <h1 class="text" style="text-align: center; letter-spacing: 0.8rem; text-decoration: none;">Blog</h1>
+  <hr style="width: 10%; size: 500px;">
+  <div class="row">
+    <div class="left-column">
+        <div class="card">
+            <h2>First Blog Post</h2>
+            <h5>Intial Blog Post, Jan 31, 2025</h5>
+            <div class="fakeimg" style="height: 200px;">Image</div>
+            <p>Some text...</p>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="card">
+            <h3>Recent Posts</h3>
+            <div class="fakeimg">Post 1</div><br>
+            <div class="fakeimg">Post 2</div><br>
+            <div class="fakeimg">Post 3</div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<footer>
+  <div id="footer">
+    <p>Thomas Ketterer 2025</p>
+    <p>email: thomasketterer3@gmail.com</p>
+  </div>
+</footer>
+
+</html>
