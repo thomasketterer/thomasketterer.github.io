@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const popularPosts = [
         {title: "Portfolio Website: 12 for 12 January Project", link: "../projects/website-project.html" },
-        {title: "The Gavel: Behind the Scenes of Making a...", link: "../index.html"},
+        {title: "Recycle Me: 12 for 12 February Project", link: "../projects/recycle-me.html"},
         {title: "Why 12 for 12: Explaining my 2025 project(s)", link: "../blog/why-12-for-12.html"}
     ];
 
