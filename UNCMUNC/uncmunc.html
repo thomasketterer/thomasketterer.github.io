@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TKETT Blog</title>
+  <link rel="icon" type="image/x-icon" href="/pictures/drawn-headshot.ico">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <style>
+    .player {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 700px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .player img { height: 120px; border-radius: 8px; margin: 0 20px; }
+    .life { font-size: 1.5em; font-weight: bold; }
+    .life-controls button { margin: 0 5px; padding: 6px 12px; font-size: 1.2em; }
+    #adminSection { display: none; margin-top: 20px; }
+  </style>
+</head>
+
+<header>
+  <nav>
+    <div class="left">
+      <a href="../index.html" id="logo">TKETT</a>
+    </div>
+    <div class="right">
+      <a href="../index.html" class="text">ABOUT</a>
+      <a href="../projects/projects.html" class="text">PROJECTS</a>
+      <a href="#" class="text">UNCMUNC</a>
+      <a href="/blog/blog.html" class="text">BLOG</a>
+      <a href="#footer" class="text">CONTACT</a>
+    </div>
+  </nav>
+</header>
+
+<body>
+  <h1>MUN MTG Scoreboard</h1>
+
+  <!-- Players list -->
+  <div id="players"></div>
+
+  <!-- Admin form -->
+  <div id="adminSection">
+    <h2>Add Player (Admin)</h2>
+    <form id="addPlayerForm">
+      <input type="text" id="nameInput" placeholder="Name" required>
+      <input type="text" id="cardInput" placeholder="Card Name" required>
+      <input type="number" id="lifeInput" placeholder="Life" value="20">
+      <button type="submit">Add Player</button>
+    </form>
+  </div>
+
+  <script type="module">
+    // === Firebase setup ===
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getDatabase, ref, set, update, onValue, push } 
+      from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyD-WMlNxBi97g1sYmtiz-0fkJHOtYaF01M",
+        authDomain: "crisis-on-ravnica.firebaseapp.com",
+        projectId: "crisis-on-ravnica",
+        storageBucket: "crisis-on-ravnica.firebasestorage.app",
+        messagingSenderId: "194412674678",
+        appId: "1:194412674678:web:db001da40f62c7bccc2957",
+        measurementId: "G-Q59DZD89C4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // === Check if in admin mode (via ?admin=true) ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get("admin") === "true";
+
+    if (isAdmin) {
+      document.getElementById("adminSection").style.display = "block";
+    }
+
+    // === Render Players ===
+    const playersDiv = document.getElementById("players");
+
+    function renderPlayers(players) {
+      playersDiv.innerHTML = "";
+      for (const id in players) {
+        const player = players[id];
+        const div = document.createElement("div");
+        div.className = "player";
+
+        let controlsHTML = `
+          <span class="life">${player.life}</span>
+        `;
+
+        if (isAdmin) {
+          controlsHTML = `
+            <button onclick="changeLife('${id}', ${player.life - 1})">-</button>
+            <span class="life">${player.life}</span>
+            <button onclick="changeLife('${id}', ${player.life + 1})">+</button>
+          `;
+        }
+
+        div.innerHTML = `
+          <span>${player.name}</span>
+          <img src="https://api.scryfall.com/cards/named?exact=${encodeURIComponent(player.card)}&format=image" alt="${player.card}">
+          <div class="life-controls">
+            ${controlsHTML}
+          </div>
+        `;
+        playersDiv.appendChild(div);
+      }
+    }
+
+    // === Listen for updates in realtime ===
+    onValue(ref(db, "players"), (snapshot) => {
+      const data = snapshot.val() || {};
+      renderPlayers(data);
+    });
+
+    // === Add player (admin form) ===
+    if (isAdmin) {
+      document.getElementById("addPlayerForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("nameInput").value;
+        const card = document.getElementById("cardInput").value;
+        const life = parseInt(document.getElementById("lifeInput").value) || 20;
+
+        const newRef = push(ref(db, "players"));
+        set(newRef, { name, card, life });
+
+        e.target.reset();
+      });
+    }
+
+    // === Change life (called by inline buttons) ===
+    window.changeLife = function (id, newLife) {
+      if (!isAdmin) return; // block viewers
+      update(ref(db, "players/" + id), { life: newLife });
+    };
+  </script>
+</body>
+</html>
