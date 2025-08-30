@@ -94,34 +94,53 @@
     const playersDiv = document.getElementById("players");
 
     function renderPlayers(players) {
-      playersDiv.innerHTML = "";
-      for (const id in players) {
-        const player = players[id];
-        const div = document.createElement("div");
-        div.className = "player";
+        playersDiv.innerHTML = "";
+        for (const id in players) {
+            const player = players[id];
+            const div = document.createElement("div");
+            div.className = "player";
 
-        let controlsHTML = `
-          <span class="life">${player.life}</span>
-        `;
+            // Life controls
+            let controlsHTML = `<span class="life">${player.life}</span>`;
+            if (isAdmin) {
+                controlsHTML = `
+                    <button onclick="changeLife('${id}', ${player.life - 1})">-</button>
+                    <span class="life">${player.life}</span>
+                    <button onclick="changeLife('${id}', ${player.life + 1})">+</button>
+                `;
+            }
 
-        if (isAdmin) {
-          controlsHTML = `
-            <button onclick="changeLife('${id}', ${player.life - 1})">-</button>
-            <span class="life">${player.life}</span>
-            <button onclick="changeLife('${id}', ${player.life + 1})">+</button>
-          `;
+            // Cards display
+            let cardsHTML = "";
+            if (player.cards) {
+                player.cards.forEach((cardUrl, cardIndex) => {
+                    cardsHTML += `
+                        <div class="card" style="position:relative; display:inline-block; margin:5px;">
+                            <img src="${cardUrl}" alt="card" style="height:100px; border-radius:6px;">
+                            ${isAdmin ? `<button class="remove-card" style="position:absolute; top:-5px; right:-5px; background:red; color:black; border:none; border-radius:50%; width:20px; height:20px; cursor:pointer;" onclick="removeCard('${id}', ${cardIndex})">×</button>` : ""}
+                        </div>
+                    `;
+                });
+            }
+
+            // Add card input (admin only)
+            const addCardHTML = isAdmin ? `
+                <input type="text" id="addCard-${id}" placeholder="Card image URL">
+                <button onclick="addCard('${id}', document.getElementById('addCard-${id}').value)">Add Card</button>
+            ` : "";
+
+            div.innerHTML = `
+                <span>${player.name}</span>
+                <img src="https://api.scryfall.com/cards/named?exact=${encodeURIComponent(player.card)}&format=image" alt="${player.card}">
+                <div class="life-controls">${controlsHTML}</div>
+                <div class="cards">${cardsHTML}</div>
+                ${addCardHTML}
+            `;
+
+            playersDiv.appendChild(div);
         }
-
-        div.innerHTML = `
-          <span>${player.name}</span>
-          <img src="https://api.scryfall.com/cards/named?exact=${encodeURIComponent(player.card)}&format=image" alt="${player.card}">
-          <div class="life-controls">
-            ${controlsHTML}
-          </div>
-        `;
-        playersDiv.appendChild(div);
-      }
     }
+
 
     // === Listen for updates in realtime ===
     onValue(ref(db, "players"), (snapshot) => {
@@ -131,17 +150,38 @@
 
     // === Add player (admin form) ===
     if (isAdmin) {
-      document.getElementById("addPlayerForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("nameInput").value;
-        const card = document.getElementById("cardInput").value;
-        const life = parseInt(document.getElementById("lifeInput").value) || 20;
+        document.getElementById("addPlayerForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("nameInput").value;
+            const card = document.getElementById("cardInput").value;
+            const life = parseInt(document.getElementById("lifeInput").value) || 20;
 
-        const newRef = push(ref(db, "players"));
-        set(newRef, { name, card, life });
+            const newRef = push(ref(db, "players"));
+            set(newRef, { name, card, life });
 
-        e.target.reset();
-      });
+            e.target.reset();
+        });
+
+        window.addCard = function(playerId, url) {
+            if (!url) return;
+            const cardsRef = ref(db, "players/" + playerId + "/cards");
+            onValue(cardsRef, (snapshot) => {
+                const cards = snapshot.val() || [];
+                cards.push(url);
+                set(cardsRef, cards); // ✅ replace array with new one
+            }, { onlyOnce: true });
+        };
+
+        window.removeCard = function(playerId, cardIndex) {
+            const cardsRef = ref(db, "players/" + playerId + "/cards");
+            onValue(cardsRef, (snapshot) => {
+                const cards = snapshot.val() || [];
+                cards.splice(cardIndex, 1);
+                set(cardsRef, cards); // ✅ replace array with new one
+            }, { onlyOnce: true });
+        };
+
+
     }
 
     // === Change life (called by inline buttons) ===
