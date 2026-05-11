@@ -1,6 +1,5 @@
 body {
     font-family: "Gloria Hallelujah", 'Times New Roman', Times, serif;
-    text-decoration: none !important;
 }
 
 html {
@@ -125,12 +124,9 @@ nav a:hover {
 }
 
 .fakeimg {
-    background-color: #f8f8f8;
+    background-color: #aaa;
     width: 95%;
     padding: 20px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 .realimg {
@@ -146,15 +142,6 @@ nav a:hover {
     margin-top: 20px;
     border: 5px solid black;
     margin-left: 5px;
-}
-
-.card a:link, a:visited, a:hover, a:active {
-    text-decoration: none !important;
-}
-
-.card img {
-    height: 200px;
-    width: auto;
 }
 
 .row:after {
