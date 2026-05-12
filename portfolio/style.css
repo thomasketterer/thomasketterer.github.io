@@ -144,6 +144,40 @@ nav a:hover {
     margin-left: 5px;
 }
 
+.display-grid {
+    dispay: grid;
+    grid-template-columns: 50vw 50vw;
+}
+
+.display-grid img {
+    width: 48vw;
+    height: auto;
+    object-fit: cover;
+}
+
+.display-grid img:hover {
+    filter: grayscale(100%);
+    transition: 1s;
+}
+
+.display-left {
+    align-self: left;
+    margin-left: 1vw;
+    width: 48vw;
+}
+
+.display-right {
+    position: absolute;
+    right: 0;
+    margin-right: 1vw;
+    width: 48vw;
+}
+
+.display-image {
+    width: 48vw;
+    height: auto;
+}
+
 .row:after {
     content: "";
     display: table;
