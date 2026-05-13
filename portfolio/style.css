@@ -160,6 +160,27 @@ nav a:hover {
     transition: 1s;
 }
 
+.portfolio-grid-overlay .grid-item .portfolio-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 7%;
+    text-align: center;
+    z-index: 100;
+    transition: opacity ease 200ms;
+}
+
+.tweak-portfolio-grid-overlay-show-text-after-hover .portfolio-grid-overlay .grid-item .portfolio-text, .tweak-portfolio-grid-overlay-show-text-after-hover .portfolio-grid-overlay .grid-item .portfolio-overlay {
+    opacity: 0;
+}
+
 .display-left {
     align-self: left;
     margin-left: 1vw;
