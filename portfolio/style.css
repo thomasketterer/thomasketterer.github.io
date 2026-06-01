@@ -231,61 +231,110 @@ nav a:hover {
     width: 100%;
 }
 
+/* Grid layout */
 .portfolio-grid-overlay {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    grid-auto-rows: min-content;
-}
-
-.page-section .collection-content-wrapper, .page-section .gallery-content-wrapper {
+    gap: 0;
     width: 100%;
-    padding-right: 4vw;
     padding-left: 4vw;
-    margin: 0 auto;
+    padding-right: 4vw;
     box-sizing: border-box;
 }
 
-.tweak-portfolio-grid-overlay-width-full .portfolio-grid-overlay {
-    width: 100%;
-    padding-left: 4vw;
-    padding-right: 4vw;
-}
-
-.tweak-portfolio-grid-overlay-height-small .portfolio-grid-overlay {
-    padding-top: 3.3vw;
-    padding-bottom: 3.3vw;
-    min-height: 33vh;
-}
-
-image-aspect-ratio-43-four-three .portfolio-grid-overlay .grid-item {
-    padding-bottom: 75%;
-}
-
+/* Each grid cell — padding-bottom creates the 16:9 aspect ratio */
 .portfolio-grid-overlay .grid-item {
     position: relative;
     height: 0;
+    padding-bottom: 56.25%; /* 16:9 — change to 75% for 4:3 */
+    overflow: hidden;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-    color: inherit;
-    text-decoration: none;
-    background: transparent;
-}
-
+/* The image wrapper fills the cell */
 .portfolio-grid-overlay .grid-item .grid-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    position: relative;
+    height: 100%;
     overflow: hidden;
     margin: 0;
     line-height: 0;
 }
 
-div {
+/* Inner wrapper for the scale-on-hover effect */
+.portfolio-grid-overlay .grid-item .grid-image-inner-wrapper {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-grid-overlay .grid-item:hover .grid-image-inner-wrapper {
+    transform: scale(1.04);
+}
+
+/* The image itself */
+.portfolio-grid-overlay .grid-item .grid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    unicode-bidi: isolate;
+}
+
+/* Hover overlay */
+.portfolio-grid-overlay .grid-item .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.portfolio-grid-overlay .grid-item:hover .grid-overlay {
+    opacity: 1;
+}
+
+.grid-overlay .grid-title {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0 0 4px;
+}
+
+.grid-overlay .grid-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 28.125%; /* half of 56.25% to maintain 16:9 at 50% width */
+    height: 0;
+    overflow: hidden;
+    max-width: 50%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.description {
+    width: 100%;
+    height: 100%;
+}
+
+.description p {
+    padding-left: 23%;
+    padding-right: 23%;
 }
